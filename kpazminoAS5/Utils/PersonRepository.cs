@@ -59,5 +59,39 @@ namespace kpazminoAS5.Utils
             }
             return new List<Persona>();
         }
+        public void UpdatePerson(Persona persona)
+        {
+            int result = 0;
+            try
+            {
+                init();
+                if (persona == null || persona.Id == 0)
+                    throw new Exception("La persona es requerida");
+
+                result = conn.Update(persona);
+                StatusMessage = string.Format("Dato actualizado correctamente", result, persona.Name);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error al actualizar", ex.Message);
+            }
+        }
+        public void DeletePerson(int id)
+        {
+            int result = 0;
+            try
+            {
+                init();
+                if (id <= 0)
+                    throw new Exception("Id de la persona es requerido");
+
+                result = conn.Delete<Persona>(id);
+                StatusMessage = string.Format("Dato eliminado correctamente", result);
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error al eliminar", ex.Message);
+            }
+        }
     }
 }

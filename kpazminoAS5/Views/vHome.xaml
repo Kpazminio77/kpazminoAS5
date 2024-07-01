@@ -20,6 +20,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -38,8 +40,20 @@
                     Clicked="btnListar_Clicked"
                     Grid.Row="2"
                     Grid.Column="0"/>
+            <Button x:Name="btnActualizar"
+                    Text="Actualizar Persona"
+                    Clicked="btnActualizar_Clicked"
+                    Grid.Row="3"
+                    Grid.Column="0"/>
+            <Button x:Name="btnEliminar"
+                    Text="Eliminar Persona"
+                    Clicked="btnEliminar_Clicked"
+                    Grid.Row="4"
+                    Grid.Column="0"/>
             <CollectionView x:Name="ListaPersonas"
-                            Grid.Row="3"
+                            SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged"
+                            Grid.Row="5"
                             Grid.Column="0">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -53,7 +67,6 @@
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-                
             </CollectionView>
         </Grid>
     </VerticalStackLayout>
